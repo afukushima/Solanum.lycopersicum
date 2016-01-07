@@ -1,0 +1,12 @@
+Package: Solanum.lycopersicum
+Title: Annotation package for the Solanum.lycopersicum object
+Description: Contains the Solanum.lycopersicum object to access data from several related annotation packages.
+Version: 0.0.1
+Author: Atsushi Fukushima
+Maintainer: Atsushi Fukushima <atsushi.fukushima@riken.jp>
+Depends: R (>= 1.6), AnnotationDbi (>= 1.17.11), methods, OrganismDbi, GenomicFeatures, GO.db, org.Slycopersicum.eg.db, org.Slycopersicum.kozo.db, tomatoGeneChip.db, TxDb.Slycopersicum.itag2.4.genemodels
+Imports: GenomicFeatures, AnnotationDbi
+License: Artistic-2.0
+organism: Solanum lycopersicum
+species: Solanum lycopersicum
+biocViews: AnnotationData, Genetics, OrganismDb, Solanum_lycopersicum

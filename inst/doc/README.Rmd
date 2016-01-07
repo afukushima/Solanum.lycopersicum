@@ -1,0 +1,61 @@
+---
+title: "README for OrganismDbi package Solanum.lycopersicum"
+author: "Atsushi Fukushima"
+output: word_document
+---
+
+##### date
+```{r timelog, echo = FALSE}
+sessionInfo()
+```
+
+# Getting started with Solanum.lycopersicum package
+ Usage of a package like this has been deliberately kept very simple. The methods supported are the same ones that work for all the packages based on AnnotationDb objects. The methods that can be applied to these new packages are columns, keys, keytypes and select. So to learn which kinds of data can be retrieved from a package like this we would simply load the package and then call the columns method.
+
+
+```{r}
+library(Solanum.lycopersicum)
+tom <- Solanum.lycopersicum
+columns(tom)
+## To learn which of those kinds of data can be used as keys to extract data,
+## we use the keytypes method.
+keytypes(tom)
+## To extract specific keys, we need to use the keys method, and also
+## provide it a legitimate keytype:
+head(keys(tom, keytype="ENTREZID"))
+head(keys(tom, keytype="ITAG"))
+head(keys(tom, keytype="SGN"))
+head(keys(tom, keytype="UNIPROT"))
+head(keys(tom, keytype="lycocyc"))
+head(keys(tom, keytype="GO"))
+
+
+
+k <- head(keys(tom, keytype="ITAG"), n = 3)
+k
+k2 <- head(keys(tom, keytype="GO"), n = 3)
+k2
+keys <- c("Solyc00g005000.2",
+          "Solyc00g005020.1",
+          "Solyc00g009100.2")
+
+keys2 <- c("Solyc00g005000.2.1",
+           "Solyc00g009100.2.1")
+
+
+select(tom, keys=k, columns=c("UNIPROT"), keytype="ITAG")
+select(tom, keys=k, columns=c("SGN"), keytype="ITAG")
+res <- select(tom, keys=k2, columns=c("ITAG"), keytype="GO")
+head(res)
+res2 <- select(tom, keys=k2, columns=c("ENTREZID", "REFSEQ", "DEFINITION"), keytype="GO")
+head(res2)
+
+
+select(tom, keys=keys, columns=c("UNIPROT"), keytype="ITAG")
+select(tom, keys=keys2, columns=c("UNIPROT"), keytype="ITAG")
+select(tom, keys=keys, columns=c("TXNAME", "TXID", "CDSNAME"), keytype="GENEID")
+select(tom, keys=keys2, columns=c("TXNAME", "TXID", "CDSNAME"), keytype="ITAG")
+
+
+
+```
